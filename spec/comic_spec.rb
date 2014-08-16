@@ -36,4 +36,12 @@ describe Comic do
     end
   end
 
+  describe 'find' do
+    it 'finds and returns comic from id' do
+      avengers = Comic.new({'name' => 'Avengers'})
+      avengers.save
+      expect(Comic.find(avengers.id).name).to eq avengers.name
+    end
+  end
+
 end

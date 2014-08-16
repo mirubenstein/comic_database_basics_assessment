@@ -29,5 +29,11 @@ class Comic
     DB.exec("DELETE FROM comics WHERE id = #{@id};")
   end
 
+  def self.find comic_id
+    result = []
+    self.all.each {|comic| result = comic if comic.id.to_i == comic_id}
+    result
+  end
+
 end
 
