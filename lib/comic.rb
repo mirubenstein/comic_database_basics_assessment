@@ -25,5 +25,9 @@ class Comic
     @name = attributes['name']
   end
 
+  def delete
+    DB.exec("DELETE FROM comics WHERE id = #{@id};")
+  end
+
 end
 

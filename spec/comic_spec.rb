@@ -27,4 +27,13 @@ describe Comic do
     end
   end
 
+  describe 'delete' do
+    it 'deletes comic' do
+      avengers = Comic.new({'name' => 'Avengers'})
+      avengers.save
+      avengers.delete
+      expect(Comic.all).to eq []
+    end
+  end
+
 end
