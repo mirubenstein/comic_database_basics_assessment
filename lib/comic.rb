@@ -20,5 +20,10 @@ class Comic
     @id = DB.exec("INSERT INTO comics (name) VALUES ('#{@name}') RETURNING id;").first['id'].to_i
   end
 
+  def update attributes
+    DB.exec("UPDATE comics SET name = '#{attributes['name']}' WHERE id = #{@id};")
+    @name = attributes['name']
+  end
+
 end
 

@@ -18,4 +18,13 @@ describe Comic do
     end
   end
 
+  describe 'update' do
+    it 'updates comic name with new name' do
+      avengers = Comic.new({'name' => 'Avengers'})
+      avengers.save
+      avengers.update({'name' => 'X-Men'})
+      expect(avengers.name).to eq 'X-Men'
+    end
+  end
+
 end
