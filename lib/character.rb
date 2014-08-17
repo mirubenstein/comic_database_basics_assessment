@@ -7,4 +7,17 @@ class Character
     @id = attributes['id']
   end
 
+  def self.all
+    all_characters = []
+    results = DB.exec("SELECT * FROM characters;")
+    results.each do |result|
+      all_characters << Comic.new(result)
+    end
+    all_characters
+  end
+
+  def save
+    @id = DB.exec("INSERT INTO characters (name) VALUES ('#{@name}') RETURNING id;").first['id'].to_i
+  end
+
 end

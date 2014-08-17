@@ -10,4 +10,12 @@ describe Character do
     end
   end
 
+  describe 'all' do
+    it 'lists all saved instances of Character' do
+      hulk = Character.new({'name' => 'Hulk'})
+      hulk.save
+      expect(Character.all[0].id.to_i).to eq hulk.id
+    end
+  end
+
 end
