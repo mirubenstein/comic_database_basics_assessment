@@ -18,4 +18,13 @@ describe Character do
     end
   end
 
+  describe 'update' do
+    it 'updates character name with new name' do
+      hulk = Character.new({'name' => 'Hulk'})
+      hulk.save
+      hulk.update({'name' => 'Cyclops'})
+      expect(hulk.name).to eq 'Cyclops'
+    end
+  end
+
 end

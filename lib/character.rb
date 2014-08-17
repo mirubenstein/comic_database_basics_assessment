@@ -20,4 +20,9 @@ class Character
     @id = DB.exec("INSERT INTO characters (name) VALUES ('#{@name}') RETURNING id;").first['id'].to_i
   end
 
+  def update attributes
+    DB.exec("UPDATE characters SET name = '#{attributes['name']}' WHERE id = #{@id};")
+    @name = attributes['name']
+  end
+
 end
