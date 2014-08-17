@@ -27,4 +27,13 @@ describe Character do
     end
   end
 
+  describe 'delete' do
+    it 'deletes character' do
+      hulk = Character.new({'name' => 'Hulk'})
+      hulk.save
+      hulk.delete
+      expect(Character.all).to eq []
+    end
+  end
+
 end

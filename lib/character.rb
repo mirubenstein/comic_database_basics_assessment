@@ -25,4 +25,8 @@ class Character
     @name = attributes['name']
   end
 
+  def delete
+    DB.exec("DELETE FROM characters WHERE id = #{@id};")
+  end
+
 end
