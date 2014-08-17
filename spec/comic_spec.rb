@@ -44,4 +44,15 @@ describe Comic do
     end
   end
 
+  describe 'add_character' do
+    it 'adds character to comic and lists them' do
+      avengers = Comic.new({'name' => 'Avengers'})
+      avengers.save
+      hulk = Character.new({'name' => 'Hulk'})
+      hulk.save
+      avengers.add_character(hulk)
+      expect(avengers.list_characters[0].name).to eq hulk.name
+    end
+  end
+
 end

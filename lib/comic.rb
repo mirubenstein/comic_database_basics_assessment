@@ -1,6 +1,7 @@
 class Comic
 
-  attr_accessor :name, :id
+  attr_accessor :name,
+  :id
 
   def initialize attributes
     @name = attributes['name']
@@ -35,5 +36,26 @@ class Comic
     result
   end
 
+  def add_character character
+    DB.exec("INSERT INTO comic_characters (comic_id, character_id) VALUES (#{self.id}, #{character.id});")
+  end
+
+  def list_characters
+    all_characters = []
+    results = DB.exec("SELECT characters.* FROM comics
+                        JOIN comic_characters ON (comic_characters.comic_id = comics.id)
+                        JOIN characters ON (comic_characters.character_id = characters.id)
+                        WHERE comics.id = #{id};")
+    results.each do |result|
+      all_characters << Character.new(result)
+    end
+    all_characters
+  end
+
 end
+
+# DB.exec("SELECT stations.* FROM stops
+#   JOIN lines ON (stops.line_id = lines.id)
+#   JOIN stations ON (stops.station_id = stations.id)
+#   WHERE lines.id = #{id};")
 
