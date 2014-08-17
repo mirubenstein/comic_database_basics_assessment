@@ -35,4 +35,16 @@ class Character
     result
   end
 
+  def list_comics
+    all_comics = []
+    results = DB.exec("SELECT comics.* FROM characters
+                        JOIN comic_characters ON (comic_characters.character_id = characters.id)
+                        JOIN comics ON (comic_characters.comic_id = comics.id)
+                        WHERE characters.id = #{id};")
+    results.each do |result|
+      all_comics << Comic.new(result)
+    end
+    all_comics
+  end
+
 end
