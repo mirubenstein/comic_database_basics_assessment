@@ -29,4 +29,10 @@ class Character
     DB.exec("DELETE FROM characters WHERE id = #{@id};")
   end
 
+  def self.find character_id
+    result = []
+    self.all.each {|character| result = character if character.id.to_i == character_id}
+    result
+  end
+
 end

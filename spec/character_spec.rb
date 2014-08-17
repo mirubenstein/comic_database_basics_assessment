@@ -36,4 +36,12 @@ describe Character do
     end
   end
 
+  describe 'find' do
+    it 'finds and returns character from id' do
+      hulk = Character.new({'name' => 'Hulk'})
+      hulk.save
+      expect(Character.find(hulk.id).name).to eq hulk.name
+    end
+  end
+
 end
