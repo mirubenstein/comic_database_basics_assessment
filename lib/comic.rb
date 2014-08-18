@@ -54,8 +54,3 @@ class Comic
 
 end
 
-# DB.exec("SELECT stations.* FROM stops
-#   JOIN lines ON (stops.line_id = lines.id)
-#   JOIN stations ON (stops.station_id = stations.id)
-#   WHERE lines.id = #{id};")
-
